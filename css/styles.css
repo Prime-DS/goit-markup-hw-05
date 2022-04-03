@@ -161,7 +161,7 @@ a.logo {
 
   color: var(--primery-title-color);
   
-  transition: bbackground-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-link:hover,
@@ -211,6 +211,8 @@ a.logo {
   letter-spacing: 0.02em;
 
   color: var(--primary-text-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-mail:hover,
@@ -228,7 +230,10 @@ a.logo {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
   color: var(--primary-text-color);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-phone:hover,
@@ -395,6 +400,8 @@ a.logo {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   background-color: var(--header-bg-color);
   border-radius: 0px 0px 4px 4px;
+
+ 
 }
 
 .team-list-item:not(:last-child) {
@@ -440,6 +447,9 @@ a.logo {
   border-radius: 50%;
 
   fill: #afb1b8;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) ;
 }
 
 .social-link:hover,
@@ -475,6 +485,9 @@ a.logo {
   border: 1px solid #afb1b8;
   fill: #afb1b8;
   border-radius: 4px;
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-link:hover,
@@ -562,9 +575,11 @@ a.logo {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  fill: var(--header-bg-color);
 
+  fill: var(--header-bg-color);
   background-color: rgba(255, 255, 255, 0.1);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-media-link:hover,
@@ -605,6 +620,10 @@ a.logo {
   color: var(--primery-title-color);
   background-color: #f5f4fa;
 
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  backdrund-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   cursor: pointer;
 }
 
@@ -640,13 +659,7 @@ a.logo {
   display: block;
 }
 
-.portfolio-link::before {
-  position: absolute;
-  content: "";
-  width: 70px;
-  height: 70px;
-  background-color: hsla(0, 31%, 48%, 0.452);
-}
+
 
 .portfolio-link:hover,
 .portfolio-link:focus {
@@ -677,5 +690,88 @@ a.logo {
   text-align: left;
 }
 
-.portfolio {
+.portfolio-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-descr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 63px 24px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  color: var(--header-bg-color);
+  background-color: rgba(33, 150, 243, 0.9);
+
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-link:hover .portfolio-descr {
+  transform: translateY(0);
+
+}
+
+
+/* Модельное окно */
+
+
+
+
+.backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.modal-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 528px;
+  height: 581px;
+
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+  0px 1px 1px rgba(0, 0, 0, 0.14),
+  0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  background-color: var(--header-bg-color);
+}
+
+.modal-btn {
+  display: block;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  fill: #212121;
 }
